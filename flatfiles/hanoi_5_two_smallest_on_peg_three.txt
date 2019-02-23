@@ -19,3 +19,27 @@ fact: (pred obj1 obj2)
 rule: ((pred obj1 obj2) (pred obj2 obj3)) -> (pred obj1 obj3)
 
 """
+
+fact: (on disk1 peg3)
+fact: (on disk2 peg3)
+fact: (on disk3 peg1)
+fact: (on disk4 peg1)
+fact: (on disk5 peg1)
+fact: (pred disk3 disk4)
+fact: (pred disk4 disk5)
+fact: (pred disk1 disk2)
+
+fact: (smaller disk1 disk2)
+fact: (smaller disk2 disk3)
+fact: (smaller disk3 disk4)
+fact: (smaller disk4 disk5)
+
+fact: (empty peg2)
+
+fact: (top disk3 peg1)
+fact: (top disk1 peg3)
+
+rule: ((pred ?x ?y) (pred ?y ?z)) -> (pred ?x ?z)
+rule: ((smaller ?x ?y) (smaller ?y ?z)) -> (smaller ?x ?z)
+rule: ((top ?x ?y) (empty ?z)) -> (movable ?x ?y ?z)
+rule: ((top ?x ?y) (top ?z ?w) (smaller ?x ?z)) -> (movable ?x ?y ?w)
